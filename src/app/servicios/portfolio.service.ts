@@ -18,6 +18,111 @@ export class PortfolioService {
   constructor(private http:HttpClient,private cookies:CookiesService) {}
 
   obtenerUsuarios():Observable<any>{
+   return this.http.get('https://portfolioservice-qxs5.onrender.com/usuarios/ver');
+  }
+
+  obtenerUsuario():Observable<any>{
+    return this.http.get('https://portfolioservice-qxs5.onrender.com/usuarios/ver/'+this.cookies.dameId());
+   }
+
+  nuevoUsuario(usuario:Usuario){
+    return this.http.post("https://portfolioservice-qxs5.onrender.com/usuarios/new" , usuario ).toPromise().then(data=>{});
+  }
+
+  editarEncabezado(usuario:Usuario){
+    return this.http.post("https://portfolioservice-qxs5.onrender.com/usuarios/new" , usuario ).toPromise().then(data=>{});
+  }
+  
+  subirImagen(imagen:FormData){
+    return this.http.post('https://portfolioservice-qxs5.onrender.com/images/new',imagen).toPromise().then(data=>{});
+  }
+
+  obtenerEncabezado():Observable<any>{
+    return this.http.get('https://portfolioservice-qxs5.onrender.com/encabezados/ver/'+this.cookies.dameId());
+  }
+
+  editarAcercaDe(acercaDe:AcercaDe){
+    return this.http.post("https://portfolioservice-qxs5.onrender.com/acerca_de/new", acercaDe).toPromise().then(data=>{});
+  }
+
+  obtenerInstituciones():Observable<any>{
+    return this.http.get('https://portfolioservice-qxs5.onrender.com/instituciones/ver');
+  }
+
+  obtenerTecnologias():Observable<any>{
+    return this.http.get('https://portfolioservice-qxs5.onrender.com/tecnologias/ver');
+  }
+
+  obtenerSkills():Observable<any>{
+    return this.http.get('https://portfolioservice-qxs5.onrender.com/skills/ver');
+  }
+
+  obtenerCarreras():Observable<any>{
+    return this.http.get('https://portfolioservice-qxs5.onrender.com/especialidades/ver');
+  }
+
+  agregarInstitucionConImagen(institucion:FormData){
+    return this.http.post("https://portfolioservice-qxs5.onrender.com/instituciones/new1", institucion).toPromise().then(data=>{});
+  }
+  agregarInstitucionSinImagen(institucion:FormData){
+    return this.http.post("https://portfolioservice-qxs5.onrender.com/instituciones/new2", institucion).toPromise().then(data=>{});
+  }
+
+  agregarProyectoConImagen(proyecto:FormData){
+    return this.http.post("https://portfolioservice-qxs5.onrender.com/proyectos/new1", proyecto).toPromise().then(data=>{});
+  }
+  
+  agregarProyectoSinImagen(proyecto:FormData){
+    return this.http.post("https://portfolioservice-qxs5.onrender.com/proyectos/new2", proyecto).toPromise().then(data=>{});
+  }
+
+  agregarContactoConImagen(contacto:FormData){
+    return this.http.post("https://portfolioservice-qxs5.onrender.com/contactos/new1", contacto).toPromise().then(data=>{});
+  }
+
+  agregarContactoSinImagen(contacto:FormData){
+    return this.http.post("https://portfolioservice-qxs5.onrender.com/contactos/new2", contacto).toPromise().then(data=>{});
+  }
+
+  agregarCarrera(carrera:Carrera){
+    return this.http.post("https://portfolioservice-qxs5.onrender.com/especialidades/new", carrera).toPromise().then(data=>{});
+  }
+
+  agregarTecnologia(tecnologia:Tecnologia){
+    return this.http.post("https://portfolioservice-qxs5.onrender.com/tecnologias/new", tecnologia).toPromise().then(data=>{});
+  }
+
+  agregarTecnologiaUsuario(tecnologiaUsuario:FormData){
+    return this.http.post("https://portfolioservice-qxs5.onrender.com/tecnologiasUsuarios/new", tecnologiaUsuario).toPromise().then(data=>{});
+  }
+
+  agregarSkill(skill:Skill){
+    return this.http.post("https://portfolioservice-qxs5.onrender.com/skills/new", skill).toPromise().then(data=>{});
+  }
+
+  agregarSkillUsuario(skillUsuario:FormData){
+    return this.http.post("https://portfolioservice-qxs5.onrender.com/skillsUsuarios/new", skillUsuario).toPromise().then(data=>{});
+  }
+
+  agregarFormacion(formacion:FormData){
+    return this.http.post("https://portfolioservice-qxs5.onrender.com/formaciones/new", formacion).toPromise().then(data=>{});
+  }
+
+  agregarExperiencia(experiencia:FormData){
+    return this.http.post("https://portfolioservice-qxs5.onrender.com/trabajos/new", experiencia).toPromise().then(data=>{});
+  }
+
+  obtenerEstadosAcademicos():Observable<any>{
+    return this.http.get('https://portfolioservice-qxs5.onrender.com/estado_academico/ver');
+  }
+
+  eliminar(ruta:string){
+    return this.http.delete(ruta).toPromise().then(data=>{});
+  }
+
+  /*
+
+  obtenerUsuarios():Observable<any>{
    return this.http.get('http://localhost:8080/usuarios/ver');
   }
 
@@ -116,9 +221,7 @@ export class PortfolioService {
     return this.http.get('http://localhost:8080/estado_academico/ver');
   }
 
-  eliminar(ruta:string){
-    return this.http.delete(ruta).toPromise().then(data=>{});
-  }
+  */
 
 }
 
